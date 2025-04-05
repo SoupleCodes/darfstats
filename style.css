@@ -1,8 +1,12 @@
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
 body {
     background-color: ghostwhite;
     margin: 0;
     font-family: 'Afacad', Arial, sans-serif;
-    height: 100vh;
 }
 
 header {
@@ -28,7 +32,7 @@ a, .user-header {
     color: grey
 }
 
-a:hover, .user-header:hover {
+a:hover {
     color: crimson;
     transition: color 75ms linear;
 }
@@ -42,6 +46,10 @@ footer {
     width: 100%;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .page-header {
     display: flex;
     align-items: stretch;
@@ -51,7 +59,7 @@ footer {
 
 .page-banner {
     width: 100%;
-    height: 250px;
+    height: 16vw;
     background: rgb(142, 139, 190);
     background: linear-gradient(355deg, rgba(142, 139, 190, 1) 0%, rgba(226, 226, 241, 1) 35%);
     position: relative;
@@ -87,7 +95,7 @@ input {
     position: absolute; 
     margin-left: 10px; 
     color: gray;
-    font-family: 'FontAwesome'
+    opacity: 0.5;
 }
 
 input[type="search"]::-webkit-search-cancel-button{
@@ -106,12 +114,32 @@ input:focus { outline: none; box-shadow: 1px 2px 7px rgb(191, 196, 206); }
 .select-users {
     display: flex;
     flex-direction: row;
-    width: 100vw;
+    width: 100%;
     height: 100%;
     overflow-x: auto;
     flex-wrap: nowrap;
     padding: 4px 0px 12px 0px;
     gap: 4px;
+}
+
+@media screen and (width < 600px) {
+    .select-users {
+        flex-direction: column !important
+    }
+    .page-banner {
+        height: 100px;
+    }
+}
+
+.nav-elements { display: block }
+.hamburger { display: none; margin-top: 6px; position: relative; }
+.hamburber-menu { display: none }
+.icon { font-family: FontAwesome; vertical-align: middle; opacity: 0.5 }
+
+@media screen and (width < 428px) {
+    .nav-elements { display: none !important }
+    .hamburger { display: block !important }
+    .hamburber-menu { display: block !important }
 }
 
 .select-user {
@@ -126,18 +154,47 @@ input:focus { outline: none; box-shadow: 1px 2px 7px rgb(191, 196, 206); }
     cursor:pointer;
 }
 
-.select-user img {
+.select-user .img-screen img {
     max-height: 200px;
     height: auto;
     width: 100%;
     object-fit: cover;
+    transition: transform .7s ease-out;
 }
 
-.select-user:hover, .user-header:hover {
+.select-user .img-screen {
+    max-height: 200px;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+}
+
+.select-user .img-screen :hover {
+    transform: scale(1.2);
+}
+
+.select-user:hover {
     box-shadow: 1px 2px 7px grey;
 }
 
 .user-header {
     width: 100%;
     background-color: white;
+}
+
+.hamburber-elements {
+    background-color: #ffffff;
+    list-style: none;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    box-shadow: 1px 2px 7px grey;
+    height: 70px;
+    padding-top: 12px;
+    position: absolute;
+    right: 35px;
+    li {
+        border-bottom: 1px solid #f6f6f6;
+    }
 }

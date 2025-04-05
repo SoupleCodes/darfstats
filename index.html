@@ -10,9 +10,10 @@
     href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Noto+Color+Emoji&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Press+Start+2P&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
+<body class="">
   <header>
     <div class="page-header">
       <div>
@@ -21,13 +22,22 @@
         </a>
       </div>
       <div>
-        <nav>
+        <nav class="nav-elements">
           <ul>
             <li><a href="/">HOME</a></li>
             <li><a href="">STATISTICS</a></li>
             <li><a href="">ABOUT</a></li>
           </ul>
         </nav>
+        <div class="hamburber-menu">
+        <span class="fa-solid fa-bars icon hamburger">
+        </span>
+        <menu class="hamburber-elements hidden">
+          <li><a href="/">HOME</a></li>
+          <li><a href="">STATISTICS</a></li>
+          <li><a href="">ABOUT</a></li>
+        </menu>
+      </div>
       </div>
     </div>
   </header>
@@ -44,19 +54,22 @@
       </div>
     </div>
     <div class="select-users"></div>
+    <br>
   </main>
   <footer>
     This website is totally not associated with Darflen whatsoever :D
   </footer>
   <script>
-    function makeSelectUserDiv(user, avatar) {
+    function makeSelectUserDiv(user, avatar, filetype) {
       const selectUser = document.createElement('div');
       selectUser.classList.add('select-user');
       selectUser.addEventListener('click', () => {
-        window.location.href=(`/?user=${user}`)
+        window.location.href=(`?user=${user}`)
       })
       selectUser.innerHTML =
-      `<img src="https://static.darflen.com/uploads/medium/${avatar}.jpg" alt=${user}>
+      `<div class="img-screen">
+        <img src="https://static.darflen.com/uploads/medium/${avatar}.${filetype ? filetype : 'jpg'}" alt=${user}>
+       </div>
        <div class="user-header">${user}</div>
       `
       return selectUser;
@@ -64,11 +77,19 @@
 
     const selectUsers = document.querySelector('.select-users');
     if (selectUsers) {
-      selectUsers.appendChild(makeSelectUserDiv('Paradock', '51a83900894641facb7ca85b'));
       selectUsers.appendChild(makeSelectUserDiv('598', '235e677229362fe52f782ffc'));
       selectUsers.appendChild(makeSelectUserDiv('Coolkat', 'be3f623904c9818ebb91b26a'));
       selectUsers.appendChild(makeSelectUserDiv('Cheesewhisk3rs', '123119e612f817c523971d1c'));
+      selectUsers.appendChild(makeSelectUserDiv('fungi', 'f23768e13dc6c45898f21383'));
+      selectUsers.appendChild(makeSelectUserDiv('JamieD132', '6451c76f1b3392393c350af2'));
+      selectUsers.appendChild(makeSelectUserDiv('Paradock', '51a83900894641facb7ca85b'));
     }
+
+    const hamburger = document.querySelector('.hamburger');
+    const navElements = document.querySelector('.hamburber-elements');
+    hamburger.addEventListener('click', () => {
+      navElements.classList.toggle('hidden');
+    })
     
   </script>
 </body>
