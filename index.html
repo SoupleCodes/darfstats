@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DarfStats</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Noto+Color+Emoji&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Press+Start+2P&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <div class="page-header">
+      <div>
+        <a href="/">
+          <img src="darfstats.svg" alt="logo" width="128px">
+        </a>
+      </div>
+      <div>
+        <nav>
+          <ul>
+            <li><a href="/">HOME</a></li>
+            <li><a href="">STATISTICS</a></li>
+            <li><a href="">ABOUT</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="page-banner">
+      <div class="blur">
+        <form class="searchbar-container">
+          <span class="icon">&#xf002</span>
+          <input 
+            type="search" 
+            placeholder="Search..."
+          >
+        </form>
+      </div>
+    </div>
+    <div class="select-users"></div>
+  </main>
+  <footer>
+    This website is totally not associated with Darflen whatsoever :D
+  </footer>
+  <script>
+    function makeSelectUserDiv(user, avatar) {
+      const selectUser = document.createElement('div');
+      selectUser.classList.add('select-user');
+      selectUser.addEventListener('click', () => {
+        window.location.href=(`/?user=${user}`)
+      })
+      selectUser.innerHTML =
+      `<img src="https://static.darflen.com/uploads/medium/${avatar}.jpg" alt=${user}>
+       <div class="user-header">${user}</div>
+      `
+      return selectUser;
+    }
+
+    const selectUsers = document.querySelector('.select-users');
+    if (selectUsers) {
+      selectUsers.appendChild(makeSelectUserDiv('Paradock', '51a83900894641facb7ca85b'));
+      selectUsers.appendChild(makeSelectUserDiv('598', '235e677229362fe52f782ffc'));
+      selectUsers.appendChild(makeSelectUserDiv('Coolkat', 'be3f623904c9818ebb91b26a'));
+      selectUsers.appendChild(makeSelectUserDiv('Cheesewhisk3rs', '123119e612f817c523971d1c'));
+    }
+    
+  </script>
+</body>
+</html>

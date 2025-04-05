@@ -1,0 +1,143 @@
+body {
+    background-color: ghostwhite;
+    margin: 0;
+    font-family: 'Afacad', Arial, sans-serif;
+    height: 100vh;
+}
+
+header {
+    background-color: white;
+    width: 100%;
+    height: 45px;
+    box-shadow: 1px 2px 7px rgb(191, 196, 206);
+    z-index: 99;
+    position: relative;
+}
+
+ul {
+    list-style-type: none;
+    display: flex
+}
+
+li {
+    margin: -8px 15px;
+}
+
+a, .user-header {
+    text-decoration: none;
+    color: grey
+}
+
+a:hover, .user-header:hover {
+    color: crimson;
+    transition: color 75ms linear;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    position: fixed; 
+    bottom: 0;
+    width: 100%;
+}
+
+.page-header {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-evenly;
+    padding: 8px;
+}
+
+.page-banner {
+    width: 100%;
+    height: 250px;
+    background: rgb(142, 139, 190);
+    background: linear-gradient(355deg, rgba(142, 139, 190, 1) 0%, rgba(226, 226, 241, 1) 35%);
+    position: relative;
+}
+
+.blur {
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(25px);
+    position: absolute;
+    display: flex;
+}
+
+.searchbar-container { 
+    margin: auto;
+    max-width: 750px;
+    width: 100%;
+    padding: 20px;
+    align-items: center;
+    display: flex;
+}
+
+input {
+    border-radius: 50px;
+    border: none;
+    height: 35px;
+    transition: box-shadow .7s ease-out;
+    width: 100%;
+    padding-inline: 35px 10px;
+}
+
+.searchbar-container .icon { 
+    position: absolute; 
+    margin-left: 10px; 
+    color: gray;
+    font-family: 'FontAwesome'
+}
+
+input[type="search"]::-webkit-search-cancel-button{
+    -webkit-appearance: none;
+    -webkit-user-modify: read-write !important;
+    height: 15px;
+    width: 15px;
+    margin: auto;
+    background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
+    background-size: contain;
+    opacity: 0.5;
+}
+
+input:focus { outline: none; box-shadow: 1px 2px 7px rgb(191, 196, 206); }
+
+.select-users {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding: 4px 0px 12px 0px;
+    gap: 4px;
+}
+
+.select-user {
+    display: flex; 
+    flex-grow: 1; 
+    justify-content: center; 
+    text-align: center; 
+    max-width: 100%; 
+    align-items: center; 
+    flex-direction: column;
+    transition: box-shadow .7s ease-out;
+    cursor:pointer;
+}
+
+.select-user img {
+    max-height: 200px;
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+}
+
+.select-user:hover, .user-header:hover {
+    box-shadow: 1px 2px 7px grey;
+}
+
+.user-header {
+    width: 100%;
+    background-color: white;
+}
