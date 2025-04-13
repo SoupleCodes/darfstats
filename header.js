@@ -11,8 +11,8 @@
         <nav class="nav-elements">
           <ul>
             <li><a href="./" class="nav-link">HOME</a></li>
-            <li><a href="statistics.html" class="nav-link">STATISTICS</a></li>
-            <li><a href="about.html" class="nav-link">ABOUT</a></li>
+            <li><a href="statistics" class="nav-link">STATISTICS</a></li>
+            <li><a href="about" class="nav-link">ABOUT</a></li>
           </ul>
         </nav>
         <div class="hamburber-menu">
