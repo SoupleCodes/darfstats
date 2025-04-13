@@ -37,21 +37,21 @@
       if (event.key === 'Enter') {
         event.preventDefault();
         const searchValue = userSearch.value;
-        window.location.href = (`./?u=${searchValue}`)
+        window.location.href = (`statistics/?u=${searchValue}`)
       }
     })
 
     const searchIcon = document.querySelector('#search-icon');
     searchIcon.addEventListener('click', () => {
       const searchValue = userSearch.value;
-      window.location.href = (`./?u=${searchValue}`)
+      window.location.href = (`statistics/?u=${searchValue}`)
     })
 
     function makeSelectUserDiv(user, avatar, filetype) {
       const selectUser = document.createElement('div');
       selectUser.classList.add('select-user');
       selectUser.addEventListener('click', () => {
-          window.location = (`#statistics?u=${user}`)
+          window.location = (`statistics/?u=${user}`)
       })
       selectUser.innerHTML =
           `
