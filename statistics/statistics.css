@@ -1,0 +1,68 @@
+#statistics {
+    background: white;
+    padding: 8px;
+    width: 400px;
+    box-shadow: 1px 2px 7px lightgrey;
+}
+
+.statistics-box {
+    height: 30px;
+}
+
+#statistics-header {
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 8px;
+}
+
+#statistics-content {
+    gap: 4px;
+    padding: 8px 0px 0px 4px;
+}
+
+.profile-icon {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.page-banner {
+    border-radius: 5px;
+    .blur {
+        background-color: black;
+        opacity: 0.2;
+    }
+}
+
+.banner-info {
+    z-index: 99;
+    position: relative;
+    height: 16vw;
+    width: 100%;
+    margin: 5px;
+    bottom: 75px;
+}
+
+.banner-info .profile-icon {
+    border-radius: 25%;
+}
+
+.glow {
+    box-shadow: 1px 2px 12px 2px white;
+}
+
+.text-glow {
+    text-shadow: 1px 2px 8px white;
+}
+
+.column {display:flex;flex-direction:column}
+.row {display:flex;flex-direction:row}
+
+#text-info {
+    margin: 0 20px;
+    gap: 20px;
+    display: flex;
+    align-items: flex-end;
+    padding: 10px;
+}
+
+.blur { border-radius: inherit }

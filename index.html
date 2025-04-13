@@ -13,43 +13,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body class="">
-  <header>
-    <div class="page-header">
-      <div>
-        <a href="/">
-          <img src="darfstats.svg" alt="logo" width="128px">
-        </a>
-      </div>
-      <div>
-        <nav class="nav-elements">
-          <ul>
-            <li><a href="/">HOME</a></li>
-            <li><a href="">STATISTICS</a></li>
-            <li><a href="">ABOUT</a></li>
-          </ul>
-        </nav>
-        <div class="hamburber-menu">
-        <span class="fa-solid fa-bars icon hamburger">
-        </span>
-        <menu class="hamburber-elements hidden">
-          <li><a href="/">HOME</a></li>
-          <li><a href="">STATISTICS</a></li>
-          <li><a href="">ABOUT</a></li>
-        </menu>
-      </div>
-      </div>
-    </div>
-  </header>
+<body>
+  <header></header>
   <main>
     <div class="page-banner">
       <div class="blur">
         <form class="searchbar-container">
-          <span class="icon">&#xf002</span>
-          <input 
-            type="search" 
-            placeholder="Search..."
-          >
+          <span id="search-icon" class="icon clickable">&#xf002</span>
+          <input id="user-search" type="search" placeholder="Search...">
         </form>
       </div>
     </div>
@@ -59,38 +30,48 @@
   <footer>
     This website is totally not associated with Darflen whatsoever :D
   </footer>
+  <script src="header.js"></script>
   <script>
+    const userSearch = document.querySelector('#user-search');
+    userSearch.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        const searchValue = userSearch.value;
+        window.location.href = (`./?u=${searchValue}`)
+      }
+    })
+
+    const searchIcon = document.querySelector('#search-icon');
+    searchIcon.addEventListener('click', () => {
+      const searchValue = userSearch.value;
+      window.location.href = (`./?u=${searchValue}`)
+    })
+
     function makeSelectUserDiv(user, avatar, filetype) {
       const selectUser = document.createElement('div');
       selectUser.classList.add('select-user');
       selectUser.addEventListener('click', () => {
-        window.location.href=(`?user=${user}`)
+          window.location = (`#statistics?u=${user}`)
       })
       selectUser.innerHTML =
-      `<div class="img-screen">
-        <img src="https://static.darflen.com/uploads/medium/${avatar}.${filetype ? filetype : 'jpg'}" alt=${user}>
-       </div>
-       <div class="user-header">${user}</div>
-      `
+          `
+          <div class="img-screen">
+            <img src="https://static.darflen.com/uploads/medium/${avatar}.${filetype ? filetype : 'jpg'}" alt=${user}>
+           </div>
+           <div class="user-header">${user}</div>
+          `
       return selectUser;
     }
 
     const selectUsers = document.querySelector('.select-users');
-    if (selectUsers) {
-      selectUsers.appendChild(makeSelectUserDiv('598', '235e677229362fe52f782ffc'));
-      selectUsers.appendChild(makeSelectUserDiv('Coolkat', 'be3f623904c9818ebb91b26a'));
-      selectUsers.appendChild(makeSelectUserDiv('Cheesewhisk3rs', '123119e612f817c523971d1c'));
-      selectUsers.appendChild(makeSelectUserDiv('fungi', 'f23768e13dc6c45898f21383'));
-      selectUsers.appendChild(makeSelectUserDiv('JamieD132', '6451c76f1b3392393c350af2'));
-      selectUsers.appendChild(makeSelectUserDiv('Paradock', '51a83900894641facb7ca85b'));
-    }
-
-    const hamburger = document.querySelector('.hamburger');
-    const navElements = document.querySelector('.hamburber-elements');
-    hamburger.addEventListener('click', () => {
-      navElements.classList.toggle('hidden');
-    })
-    
+        if (selectUsers) {
+            selectUsers.appendChild(makeSelectUserDiv('598', '235e677229362fe52f782ffc'));
+            selectUsers.appendChild(makeSelectUserDiv('Coolkat', 'be3f623904c9818ebb91b26a'));
+            selectUsers.appendChild(makeSelectUserDiv('Cheesewhisk3rs', '123119e612f817c523971d1c'));
+            selectUsers.appendChild(makeSelectUserDiv('fungi', 'f23768e13dc6c45898f21383'));
+            selectUsers.appendChild(makeSelectUserDiv('JamieD132', '6451c76f1b3392393c350af2'));
+            selectUsers.appendChild(makeSelectUserDiv('Paradock', '51a83900894641facb7ca85b'));
+        }
   </script>
 </body>
 </html>

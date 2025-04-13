@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DarfStats</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Noto+Color+Emoji&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Press+Start+2P&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./statistics/statistics.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <header></header>
+  <main>
+    <div id="main">
+    </div>
+  </main>
+  <footer>
+    This website is totally not associated with Darflen whatsoever :D
+  </footer>
+  <script src="header.js"></script>
+  <script type="module">
+    import { fetchDarflenApi } from "/fetch.js";
+    let u = new URLSearchParams(window.location.search).get('u');
+    let mainElement = document.getElementById("main")
+
+    if (u) {
+      let fetch = await fetchDarflenApi(`users/${u}`)
+      console.log(fetch)
+
+      mainElement.innerHTML =
+      `
+      <div class="page-banner" style="
+        background-image: url(${fetch.profile.images.banner.thumbnail});
+        background-size: cover;
+        background-position: center center;
+      ">
+        <div class="blur" style="backdrop-filter: blur(3px)">
+        </div>
+      </div>
+              <div class="banner-info">
+            <div style="display:flex;padding-left:10px;">
+              <img src="${fetch.profile.images.icon.thumbnail}" class="profile-icon glow">
+              <div id="text-info">
+                <div class="stats column" style="padding: 50px 90px 0 0;align-self: center;">
+                  <big><b class="text-glow">${fetch.profile.display_name}</b></big>
+                  <small>@${fetch.profile.username}</small>
+                </div>
+                <div class="stats column text-glow">
+                  <small>Followers:</small>
+                  <big><b>${fetch.stats.followers}</b></big>
+                </div>
+                <div class="stats column text-glow">
+                  <small>Following:</small>
+                  <big><b>${fetch.stats.following}</b></big>
+                </div>
+                <div class="stats column text-glow">
+                  <small>Loves:</small>
+                  <big><b>${fetch.stats.loves}</b></big>
+                </div>
+              </div>
+            </div>
+        </div>
+      `
+
+    } else {
+      let fetch = await fetchDarflenApi("statistics")
+      const data = fetch.data
+
+      mainElement.innerHTML =
+      `
+      <div id="statistics">
+            <div id="statistics-header">
+                <i class="fa fa-bar-chart icon clickable" aria-hidden="true"> STATISTICS</i>
+            </div>
+            <div id="statistics-content column">
+              <div class="statistics-box">
+                <span>
+                  <i class="fa-solid fa-heart icon clickable" aria-hidden="true"> ${(data.loves).toLocaleString()} total hearts on posts.</i>
+                </span>
+              </div>
+              <div class="statistics-box">
+                <span>
+                  <i class="fa-solid fa-users icon clickable" aria-hidden="true"> ${(data.users).toLocaleString()} registered users.</i>
+                </span>
+              </div>
+              <div class="statistics-box">
+                <span>
+                  <i class="fa-solid fa-commenting   icon clickable" aria-hidden="true"> ${(data.posts).toLocaleString()} total posts made.</i>
+                </span>
+              </div>
+              <div class="statistics-box">
+                <span>
+                  <i class="fa-solid fa-comments   icon clickable" aria-hidden="true"> ${(data.communities).toLocaleString()} communities created.</i>
+                </span>
+              </div>
+            </div>
+        </div>
+      `
+    }
+  </script>
+</body>
+</html>
